@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>🌸  Oney & Thomy 🌸</title>
+  <style>
+    body {
+      margin: 0;
+      background: radial-gradient(circle at top, #0a0a23, #000000);
+      overflow-x: hidden;
+      overflow-y: auto;
+      font-family: 'Segoe UI', sans-serif;
+      color: #fff;
+      text-align: center;
+    }
+
+    h1 {
+      margin-top: 20px;
+      font-size: 28px;
+      color: #ffd700;
+      text-shadow: 0 0 10px #ff0;
+    }
+
+    .contenedor {
+      margin-top: 20px;
+    }
+
+    .imagen-principal {
+      width: 300px;
+      border-radius: 10px;
+      box-shadow: 0 0 20px #ffd700;
+    }
+
+    .pergamino {
+      margin: 40px auto;
+      background: #fff8dc;
+      color: #333;
+      padding: 15px;
+      border: 2px solid #d2b48c;
+      border-radius: 12px;
+      width: 320px;
+      max-height: 50px;
+      overflow: hidden;
+      transition: max-height 1s ease;
+      box-shadow: 0 0 15px #ffeb99;
+      cursor: pointer;
+      position: relative;
+      z-index: 2;
+    }
+
+    .pergamino.expandido {
+      max-height: 1000px;
+    }
+
+    #mensaje {
+      margin-top: 10px;
+      font-size: 16px;
+    }
+
+    /* Mariposas */
+    .mariposa {
+      position: absolute;
+      width: 30px;
+      animation: volar 8s infinite ease-in-out;
+    }
+
+    @keyframes volar {
+      0% { transform: translate(0, 0); }
+      25% { transform: translate(50px, -30px); }
+      50% { transform: translate(-50px, 30px); }
+      75% { transform: translate(30px, -50px); }
+      100% { transform: translate(0, 0); }
+    }
+
+    /* Pétalos cayendo */
+    .petalo {
+      position: absolute;
+      width: 20px;
+      animation: caer 6s infinite linear;
+    }
+
+    @keyframes caer {
+      0% { top: -20px; opacity: 1; }
+      100% { top: 100vh; opacity: 0; }
+    }
+
+    /* Flores pequeñas flotantes */
+    .flor {
+      position: absolute;
+      width: 25px;
+      animation: flotar 4s infinite ease-in-out;
+    }
+
+    @keyframes flotar {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🌸  Oney & Thomy 🌸</h1>
+
+  <div class="contenedor">
+    <img src="imagen-principal.png" alt="Imagen mágica" class="imagen-principal">
+  </div>
+
+  <!-- Audios mágicos -->
+  <audio id="sonido-papel" src="papel-81613.mp3"></audio>
+  <audio id="sonido-flores" src="46-flores-46639.mp3"></audio>
+  <audio id="sonido-mariposa" src="light-wing-flap-6143.mp3"></audio>
+  <audio id="cancion-amor" src="amor.mp3" loop></audio>
+
+  <!-- Pergamino encantado -->
+  <div class="pergamino" onclick="mostrarMensaje()">
+    Haz clic para ver lo que dice mi corazon 
+    <div id="mensaje"></div>
+  </div>
+
+  <script>
+    const texto = "Hola como estas este es un mensaje que viene de mi corazon mira no soy un genio creando paginas web y esto me costo bastante sabes eres increible te admiro eres hermoso una voz preciosa eres increible te quiero un monton y no sabes cuanto espero tu msg todos los dias esos msg son mi felicidad y quiero que lo sepas sime gustaste creo que yano es lo mismo desde que telo dije pero  yase por que fue jjaja es por que eres un ser tan unico y perfedto bueno fijate que talvez gustar no fue si no es mas apego por qeu quiero estar contigo y hacer un monton de cosas como amigos no como pareja la verdad mira por ti escuho un nuevo genero de musica por ti aprendi a cocinar un tipo de pastel diferente por ti me desvelo por ti esas noche que me duermo a las 8 termino durmido muy tarde jajaj se que posiblemete estas no sea tus primeras flores  amarillas pero seran las primeras que te dare yo y bueno son para recordarte que te quiero y que cada que te despiertes te despiertes con el recuerdo de que te quiero de una manera inmensa la verdad jajja es muy tonto pero te quiero suerte en tu vida aqui estare recuerda si te vas en mi corazon esta un pedacito para ti si quieres volver y quiero que veas que una persona se interesa tanto por ti que esta dispuesta a morir contigo y esta dispuesta moriri para verte como un gato en su otra vida jejejej feliz dia de  tus flores amarillas( si ves flatas de orotgrafia e spor que si lo escribi yo XD) :3";
+    let i = 0;
+
+    function mostrarMensaje() {
+      document.querySelector('.pergamino').classList.toggle('expandido');
+      document.getElementById('sonido-papel').play();
+      document.getElementById('sonido-flores').play();
+      document.getElementById('sonido-mariposa').play();
+      document.getElementById('cancion-amor').play();
+      escribirTexto();
+    }
+
+    function escribirTexto() {
+      const mensaje = document.getElementById('mensaje');
+      mensaje.innerHTML = "";
+      i = 0;
+      const intervalo = setInterval(() => {
+        mensaje.innerHTML += texto.charAt(i);
+        i++;
+        if (i >= texto.length) clearInterval(intervalo);
+      }, 50);
+    }
+
+    // Mariposas flotando
+    for (let m = 0; m < 10; m++) {
+      const mariposa = document.createElement('img');
+      mariposa.src = 'mariposa.png';
+      mariposa.className = 'mariposa';
+      mariposa.style.top = Math.random() * window.innerHeight + 'px';
+      mariposa.style.left = Math.random() * window.innerWidth + 'px';
+      mariposa.style.animationDuration = (5 + Math.random() * 5) + 's';
+      document.body.appendChild(mariposa);
+    }
+
+    // Pétalos cayendo
+    for (let p = 0; p < 30; p++) {
+      const petalo = document.createElement('img');
+      petalo.src = 'petalo.png';
+      petalo.className = 'petalo';
+      petalo.style.left = Math.random() * window.innerWidth + 'px';
+      petalo.style.animationDelay = Math.random() * 5 + 's';
+      document.body.appendChild(petalo);
+    }
+
+    // Flores pequeñas flotantes
+    for (let f = 0; f < 20; f++) {
+      const flor = document.createElement('img');
+      flor.src = 'flor.png';
+      flor.className = 'flor';
+      flor.style.top = Math.random() * window.innerHeight + 'px';
+      flor.style.left = Math.random() * window.innerWidth + 'px';
+      flor.style.animationDelay = Math.random() * 3 + 's';
+      document.body.appendChild(flor);
+    }
+  </script>
+
+</body>
+</html>

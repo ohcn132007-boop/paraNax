@@ -1,0 +1,98 @@
+body {
+  margin: 0;
+  background: radial-gradient(circle at top, #0a0a23, #000000);
+  overflow-x: hidden;
+  overflow-y: auto;
+  font-family: 'Segoe UI', sans-serif;
+  color: #fff;
+  text-align: center;
+}
+
+h1 {
+  margin-top: 20px;
+  font-size: 28px;
+  color: #ffd700;
+  text-shadow: 0 0 10px #ff0;
+}
+
+.contenedor {
+  margin-top: 20px;
+}
+
+.imagen-principal {
+  width: 300px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px #ffd700;
+}
+
+/* Pergamino mágico */
+.pergamino {
+  margin: 40px auto;
+  background: #fff8dc;
+  color: #333;
+  padding: 15px;
+  border: 2px solid #d2b48c;
+  border-radius: 12px;
+  width: 320px;
+  max-height: 50px;
+  overflow: hidden;
+  transition: max-height 1s ease;
+  box-shadow: 0 0 15px #ffeb99;
+  cursor: pointer;
+  position: relative;
+  z-index: 10;
+}
+
+.pergamino.expandido {
+  max-height: none;
+  height: auto;
+  overflow: visible;
+}
+
+/* Texto del mensaje */
+#mensaje {
+  margin-top: 10px;
+  font-size: 16px;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+/* Mariposas revoloteando */
+.mariposa {
+  position: absolute;
+  width: 30px;
+  animation: volar 8s infinite ease-in-out;
+}
+
+@keyframes volar {
+  0% { transform: translate(0, 0); }
+  25% { transform: translate(50px, -30px); }
+  50% { transform: translate(-50px, 30px); }
+  75% { transform: translate(30px, -50px); }
+  100% { transform: translate(0, 0); }
+}
+
+/* Pétalos cayendo */
+.petalo {
+  position: absolute;
+  width: 20px;
+  animation: caer 6s infinite linear;
+}
+
+@keyframes caer {
+  0% { top: -20px; opacity: 1; }
+  100% { top: 100vh; opacity: 0; }
+}
+
+/* Flores pequeñas flotantes */
+.flor {
+  position: absolute;
+  width: 25px;
+  animation: flotar 4s infinite ease-in-out;
+}
+
+@keyframes flotar {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0); }
+}
